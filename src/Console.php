@@ -38,13 +38,7 @@ class Console
      */
     private function parceParams(array $params) 
     {
-        print_r($params);
         foreach ($params as $argument) {  
-            preg_match('/[$|:]/', $argument, $matches);
-            if (!empty($matches)) {
-                echo "некоректный параметр  в ".$argument."\n";
-                continue;    
-            }
             preg_match('/^\{[\w@,]*\}$/', $argument, $matches);    
             if (!empty($matches)) {
                  $this->arguments[] = substr($matches[0], 1, -1);
